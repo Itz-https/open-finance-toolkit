@@ -1,0 +1,11 @@
+Date,Type,Category,Amount,Description
+2026-10-01,Income,Salary,25000,Monthly salary
+2026-10-03,Expense,Food,3200,Swiggy orders
+2026-10-05,Expense,Bills,1800,Electricity bill
+2026-10-09,Expense,Travel,2100,Train tickets
+2026-11-01,Income,Salary,25000,Monthly salary
+2026-11-02,Expense,Food,3500,Zomato and groceries
+2026-11-03,Expense,Travel,2000,Cab rides
+2026-11-04,Expense,Shopping,4500,Online shopping
+2026-11-05,Income,Freelance,5000,Website project
+2026-11-06,Expense,Bills,1500,Mobile recharge

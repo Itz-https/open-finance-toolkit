@@ -1,0 +1,46 @@
+name: Bug report
+description: Something does not work as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping. **Never paste real statements, names or account numbers.** Replace them with fake values.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Minimal example
+      description: A few lines of code, and a tiny **fake** CSV (header plus two rows) that shows the problem.
+      render: python
+  - type: textarea
+    id: error
+    attributes:
+      label: Error message
+      description: Paste the full error if there is one.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Open Finance Toolkit version
+      description: Run `pip show open-finance-toolkit`
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Python and pandas versions
+      placeholder: "Python 3.12, pandas 2.2"
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed all real personal and financial information from this report
+          required: true

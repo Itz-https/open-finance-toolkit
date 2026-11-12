@@ -1,0 +1,70 @@
+name: Bank format request
+description: Ask for a bank to be supported, or tell us how an existing layout performed
+labels: ["bank-format"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the most useful kind of issue for this project.
+
+        **Do not paste real transactions, names, account numbers or balances.** The header row and a few fake example values are all we need.
+  - type: input
+    id: bank
+    attributes:
+      label: Bank and statement type
+      placeholder: "Example Bank, savings account, CSV download"
+    validations:
+      required: true
+  - type: textarea
+    id: header
+    attributes:
+      label: The header row
+      description: Copy the line containing the column names exactly as it appears.
+      render: text
+      placeholder: "Date,Narration,Withdrawal Amt.,Deposit Amt.,Closing Balance"
+    validations:
+      required: true
+  - type: textarea
+    id: above
+    attributes:
+      label: Lines above the header (if any)
+      description: Replace every personal detail with a fake value.
+      render: text
+  - type: input
+    id: date
+    attributes:
+      label: What dates look like
+      description: Use a made-up date in the same format.
+      placeholder: "05/11/26 or 05-Nov-2026"
+  - type: dropdown
+    id: amounts
+    attributes:
+      label: How amounts are shown
+      options:
+        - Separate Debit and Credit columns
+        - One column, negative means money out
+        - One column with a Dr/Cr marker
+        - Something else (explain below)
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: What happens with the current version?
+      options:
+        - I have not tried it
+        - It loads correctly
+        - It loads but something is wrong
+        - It fails with an error
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed all real personal and financial information
+          required: true
+        - label: I am happy to test a fix and report back
