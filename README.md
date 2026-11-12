@@ -2,6 +2,7 @@
 
 Clean, categorise and summarise bank transaction CSVs in Python, with a focus on Indian bank statement formats.
 
+[![PyPI](https://img.shields.io/pypi/v/open-finance-toolkit.svg)](https://pypi.org/project/open-finance-toolkit/)
 [![CI](https://github.com/Itz-https/open-finance-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/Itz-https/open-finance-toolkit/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -29,8 +30,7 @@ pip install open-finance-toolkit
 
 Requires Python 3.9 or newer. The only dependency is `pandas`.
 
-> The package is not on PyPI yet. Until the first release, install from GitHub:
-> `pip install git+https://github.com/Itz-https/open-finance-toolkit.git`
+To also run the demo dashboard, install the optional extra: `pip install "open-finance-toolkit[dashboard]"`.
 
 ## Quick start
 
