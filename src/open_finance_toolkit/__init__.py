@@ -20,16 +20,19 @@ from .exceptions import (
     EmptyFileError,
     FileReadError,
     MissingColumnsError,
+    MissingDependencyError,
     NoValidTransactionsError,
     OpenFinanceError,
 )
 from .formats import LAYOUTS, Layout
 from .importer import clean_transactions, load_transactions
+from .pdf import load_pdf_transactions
 from .summary import Totals, spending_by_category, summarize, totals
 
 __all__ = [
     "__version__",
     "load_transactions",
+    "load_pdf_transactions",
     "clean_transactions",
     "categorize",
     "DEFAULT_INCOME_RULES",
@@ -47,5 +50,6 @@ __all__ = [
     "EmptyFileError",
     "FileReadError",
     "MissingColumnsError",
+    "MissingDependencyError",
     "NoValidTransactionsError",
 ]
