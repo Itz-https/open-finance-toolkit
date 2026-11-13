@@ -6,6 +6,10 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- The demo dashboard accepts HDFC statement PDFs (with an optional password box), using `load_pdf_transactions`.
+- A dark theme file, `.streamlit/config.toml`, so the dashboard's inputs match its dark design.
+
 ## [0.2.0] - 2026-11-13
 
 ### Added

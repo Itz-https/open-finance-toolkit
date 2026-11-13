@@ -1,3 +1,4 @@
 streamlit
 pandas>=2.0
 plotly
+open-finance-toolkit[pdf]>=0.2.0

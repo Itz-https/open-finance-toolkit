@@ -1,0 +1,9 @@
+# Dark theme for the demo dashboard in examples/dashboard.
+# Streamlit reads this when you run it from the project root, and Streamlit
+# Community Cloud reads it from the repository root.
+[theme]
+base = "dark"
+primaryColor = "#7C83FF"
+backgroundColor = "#0B0F19"
+secondaryBackgroundColor = "#121826"
+textColor = "#F3F5FA"
