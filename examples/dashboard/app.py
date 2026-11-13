@@ -382,13 +382,13 @@ st.markdown("""
 
 
 # Transaction data
-section("Upload Your Financial Data", "Drop in a CSV export to analyse your own transactions.")
+section("Upload Your Financial Data", "Drop in a CSV export or an HDFC statement PDF to analyse your own transactions.")
 
 upload_badge_slot = st.empty()
 
 uploaded_file = st.file_uploader(
-    "Upload a CSV file",
-    type=["csv"],
+    "Upload a CSV or PDF file",
+    type=["csv", "pdf"],
     label_visibility="collapsed"
 )
 
@@ -402,7 +402,7 @@ upload_badge_slot.markdown(
     '<div class="fin-upload">'
     '<div class="fin-upload-head"><div>'
     '<div class="fin-upload-title">📂 Transaction file</div>'
-    '<div class="fin-upload-sub">CSV only · your data is processed in this session</div>'
+    '<div class="fin-upload-sub">CSV or HDFC statement PDF · your data is processed in this session</div>'
     f'</div>{badge}</div>'
     '<div class="fin-chips">'
     '<span class="fin-chip">Date</span><span class="fin-chip">Type</span>'
@@ -410,6 +410,14 @@ upload_badge_slot.markdown(
     '</div></div>',
     unsafe_allow_html=True
 )
+
+# PDF statements may be password protected
+is_pdf = uploaded_file is not None and uploaded_file.name.lower().endswith(".pdf")
+pdf_password = None
+if is_pdf:
+    pdf_password = st.text_input(
+        "PDF password (leave empty if the PDF has none)", type="password"
+    )
 
 # Default sample data
 sample_data = {
@@ -432,8 +440,28 @@ sample_data = {
     "Amount": [25000, 3500, 2000, 4500, 5000, 1500]
 }
 
-# Read CSV safely
-if uploaded_file is not None:
+# Read the uploaded file safely
+if is_pdf:
+    try:
+        from open_finance_toolkit import (
+            OpenFinanceError,
+            categorize,
+            load_pdf_transactions,
+        )
+    except ImportError:
+        st.error(
+            "PDF support needs the open-finance-toolkit package. "
+            'Install it with: pip install "open-finance-toolkit[pdf]"'
+        )
+        st.stop()
+    try:
+        transactions = categorize(
+            load_pdf_transactions(uploaded_file, password=pdf_password or None)
+        )
+    except OpenFinanceError as error:
+        st.error(str(error))
+        st.stop()
+elif uploaded_file is not None:
     try:
         transactions = pd.read_csv(uploaded_file)
     except pd.errors.EmptyDataError:
