@@ -15,6 +15,7 @@ Every bank exports transactions slightly differently. Some put account details a
 Open Finance Toolkit does that part once, so you can focus on your app.
 
 - Reads messy statement CSVs and returns one clean, standard table
+- Reads HDFC statement PDFs too (experimental, optional `[pdf]` extra)
 - Detects the layout automatically and skips lines above the table
 - Categorises transactions with simple rules you can read and extend
 - Flags duplicate transactions without deleting anything behind your back
@@ -85,6 +86,7 @@ open-finance-toolkit categories statement.csv
 | `generic-debit-credit`: any file with separate Debit and Credit columns | Works on test data, not yet on real statements |
 | `generic-signed`: any file with one signed Amount column | Works on test data, not yet on real statements |
 | `hdfc`, `sbi`, `icici`, `axis` | **Unverified.** Based on commonly seen headers |
+| HDFC statement **PDF** (`load_pdf_transactions`) | **Experimental.** Needs `pip install "open-finance-toolkit[pdf]"`. Checked against one statement style |
 
 Anything the named layouts miss usually still loads through the generic ones. Details and how to add a bank are in [docs/adding-a-bank-format.md](docs/adding-a-bank-format.md).
 

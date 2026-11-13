@@ -11,6 +11,7 @@ from .categorize import categorize
 from .duplicates import remove_duplicates
 from .exceptions import OpenFinanceError
 from .importer import load_transactions
+from .pdf import load_pdf_transactions
 from .summary import spending_by_category, summarize, totals
 
 
@@ -27,7 +28,7 @@ def build_parser() -> argparse.ArgumentParser:
         ("categories", "Show spending per category"),
     ):
         command = commands.add_parser(name, help=help_text)
-        command.add_argument("file", help="Path to the CSV file")
+        command.add_argument("file", help="Path to the CSV file, or an HDFC statement PDF")
         command.add_argument(
             "--layout", default="auto", help="Statement layout (default: auto-detect)"
         )
@@ -51,7 +52,12 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Optional[List[str]] = None) -> int:
     args = build_parser().parse_args(argv)
     try:
-        data = load_transactions(args.file, layout=args.layout, dayfirst=not args.no_dayfirst)
+        if args.file.lower().endswith(".pdf"):
+            data = load_pdf_transactions(args.file, dayfirst=not args.no_dayfirst)
+        else:
+            data = load_transactions(
+                args.file, layout=args.layout, dayfirst=not args.no_dayfirst
+            )
         if args.remove_duplicates:
             data = remove_duplicates(data)
         data = categorize(data)

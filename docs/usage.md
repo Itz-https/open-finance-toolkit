@@ -75,7 +75,32 @@ except OpenFinanceError as error:
 | `EmptyFileError` | The file has no content |
 | `FileReadError` | The file can't be opened or parsed |
 | `MissingColumnsError` | No layout fits. `.detected` lists the columns found |
-| `NoValidTransactionsError` | Columns fit but every row was invalid |
+| `NoValidTransactionsError` | Columns fit but every row was invalid, or no transactions were found in a PDF |
+| `MissingDependencyError` | An optional package is missing, for example `pdfplumber` for PDFs |
+
+## Reading a PDF statement (experimental)
+
+Some banks only give you a PDF. Install the optional extra and use `load_pdf_transactions`:
+
+```bash
+pip install "open-finance-toolkit[pdf]"
+```
+
+```python
+from open_finance_toolkit import load_pdf_transactions
+
+transactions = load_pdf_transactions("hdfc_statement.pdf")
+# Password protected? Pass it in: load_pdf_transactions("file.pdf", password="...")
+```
+
+You get the same table as `load_transactions`, so `categorize`, `summarize` and the rest work unchanged.
+
+What to know:
+
+- **Only HDFC Bank statements** are supported for now, and the reader has been checked against one statement style. Please report statements it can't read.
+- **Text PDFs only.** A scanned or photographed statement is a picture, and reading it needs OCR, which this library does not do.
+- **Check the result.** A statement's closing balance should equal opening balance plus income minus expenses. If your totals disagree with the bank's, please open an issue.
+- The base install stays light: `pdfplumber` is only needed if you use PDFs. Without it you get a `MissingDependencyError` that tells you the install command.
 
 ## Categorising
 
@@ -145,6 +170,7 @@ Returns `Category`, `Amount` and `Share` (percent of all expenses), biggest firs
 ```bash
 open-finance-toolkit summary statement.csv --by year
 open-finance-toolkit categories statement.csv
+open-finance-toolkit summary hdfc_statement.pdf   # needs the [pdf] extra
 ```
 
 Useful flags: `--layout NAME`, `--no-dayfirst`, `--remove-duplicates`.

@@ -40,3 +40,10 @@ class MissingColumnsError(OpenFinanceError):
 
 class NoValidTransactionsError(OpenFinanceError):
     """The file was read, but no valid transaction rows were left."""
+
+
+class MissingDependencyError(OpenFinanceError):
+    """An optional package needed for this feature is not installed.
+
+    For example, reading PDFs needs ``pip install "open-finance-toolkit[pdf]"``.
+    """

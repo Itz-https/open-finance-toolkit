@@ -6,6 +6,12 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- `load_pdf_transactions` reads text-based HDFC Bank statement PDFs (experimental). It needs the optional extra `pip install "open-finance-toolkit[pdf]"`; the base install still needs only pandas.
+- `MissingDependencyError`, raised when an optional package is not installed.
+- The command line tool accepts a `.pdf` file.
+- A fake-data HDFC PDF for tests, with the script that generates it (`tests/data/make_fake_hdfc_pdf.py`).
+
 ## [0.1.0] - 2026-11-12
 
 First release as a reusable library. It grew out of the Personal Finance

@@ -33,4 +33,4 @@ Beginner-friendly starting points:
 ## Ideas we are not planning
 
 - Anything that sends financial data over the network
-- Reading PDF statements in the core package (it could become an optional add-on)
+- Making PDF reading part of the core install (it stays an optional extra so the base package only needs pandas)

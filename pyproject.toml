@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = { file = "LICENSE" }
 authors = [{ name = "Itz-https" }]
-keywords = ["finance", "bank statement", "csv", "transactions", "pandas", "india", "personal finance"]
+keywords = ["finance", "bank statement", "csv", "pdf", "transactions", "pandas", "india", "personal finance"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -27,8 +27,9 @@ classifiers = [
 dependencies = ["pandas>=2.0"]
 
 [project.optional-dependencies]
+pdf = ["pdfplumber>=0.10"]
 dashboard = ["streamlit", "plotly"]
-dev = ["pytest>=7", "pytest-cov", "ruff", "build", "twine"]
+dev = ["pytest>=7", "pytest-cov", "ruff", "build", "twine", "pdfplumber>=0.10"]
 
 [project.scripts]
 open-finance-toolkit = "open_finance_toolkit.cli:main"
@@ -56,6 +57,9 @@ addopts = "-ra"
 line-length = 100
 target-version = "py39"
 extend-exclude = ["examples/dashboard"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/data/*.py" = ["E501"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]

@@ -74,5 +74,5 @@ Help is welcome with these:
 
 - Statements where one column holds both the amount and `Dr`/`Cr` (for example `1,250.00 Dr`)
 - Credit card statements that use a different sign convention
-- PDF statements (the library reads CSV only)
+- PDF statements from banks other than HDFC (see `src/open_finance_toolkit/pdf.py` and `tests/data/make_fake_hdfc_pdf.py` to see how the HDFC one works)
 - Statements with several account sections in one file
