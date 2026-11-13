@@ -6,6 +6,8 @@ uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-13
+
 ### Added
 - `load_pdf_transactions` reads text-based HDFC Bank statement PDFs (experimental). It needs the optional extra `pip install "open-finance-toolkit[pdf]"`; the base install still needs only pandas.
 - `MissingDependencyError`, raised when an optional package is not installed.

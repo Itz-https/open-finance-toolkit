@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from open_finance_toolkit import __version__
 from open_finance_toolkit.cli import main
 
 EXAMPLES = Path(__file__).resolve().parent.parent / "examples"
@@ -47,4 +48,4 @@ def test_version_flag(capsys):
         main(["--version"])
     except SystemExit as exit_info:
         assert exit_info.code == 0
-    assert "0.1.0" in capsys.readouterr().out
+    assert __version__ in capsys.readouterr().out

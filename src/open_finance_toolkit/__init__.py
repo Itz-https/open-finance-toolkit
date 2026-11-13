@@ -8,7 +8,7 @@ Quick example::
     print(summarize(transactions, by="month"))
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 from .categorize import (
     DEFAULT_EXPENSE_RULES,
