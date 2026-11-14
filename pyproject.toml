@@ -47,7 +47,10 @@ path = "src/open_finance_toolkit/__init__.py"
 packages = ["src/open_finance_toolkit"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src", "tests", "docs", "examples", "README.md", "LICENSE", "CHANGELOG.md", "pyproject.toml"]
+# Leading slashes anchor each pattern to the project root. Without them "src"
+# would also match site/src, and the landing page would end up on PyPI.
+include = ["/src", "/tests", "/docs", "/examples", "/README.md", "/LICENSE", "/CHANGELOG.md", "/pyproject.toml"]
+exclude = ["/site"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
