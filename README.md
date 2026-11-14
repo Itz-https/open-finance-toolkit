@@ -93,6 +93,7 @@ Anything the named layouts miss usually still loads through the generic ones. De
 ## Documentation
 
 - [Website](https://itz-https.github.io/open-finance-toolkit/): overview, supported banks and how to help
+- [Live dashboard](https://open-finance-toolkit-ryrgetx4uzgmsftogm6kan.streamlit.app): upload a CSV or HDFC PDF (use fictional data)
 - [Usage guide](docs/usage.md): every function with examples
 - [Adding a bank format](docs/adding-a-bank-format.md)
 - [Roadmap](docs/roadmap.md)
