@@ -7,6 +7,7 @@ uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- A landing page in `site/` (React and Vite, with components from React Bits), published with GitHub Pages by `.github/workflows/pages.yml`.
 - The demo dashboard accepts HDFC statement PDFs (with an optional password box), using `load_pdf_transactions`.
 - A dark theme file, `.streamlit/config.toml`, so the dashboard's inputs match its dark design.
 

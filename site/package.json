@@ -1,0 +1,23 @@
+{
+  "name": "open-finance-toolkit-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Landing page for Open Finance Toolkit (not part of the PyPI package).",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.1.0",
+    "gsap": "^3.13.0",
+    "motion": "^12.23.12",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.3.4"
+  }
+}
